@@ -77,7 +77,7 @@ int main(int argc, char* argv[]) {
         // ethernet header
         struct ethHdr* ethernet = (struct ethHdr *)packet;
         // check if protocol is ipv4 (ether tyype = 0x0800)
-        if(ethernet->ether_type != 0x0008) continue;
+        if(ntohs(ethernet->ether_type) != 0x0800) continue;
 
         // ip header
         struct ipHdr* ip = (struct ipHdr *)(packet + sizeof(struct ethHdr));
